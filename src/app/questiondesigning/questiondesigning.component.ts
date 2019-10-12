@@ -98,7 +98,7 @@ export class QuestiondesigningComponent implements OnInit {
     this.savedQuestions = this.resultForm.get('questions') as FormArray;  
     this.savedQuestions.removeAt(index);
   }
-  SaveQuestion(){
+  SaveQuestionlocally(){
     this.savedQuestions = this.resultForm.get('questions') as FormArray;
     var group = this.questions.controls[0] as FormGroup;   
     this.savedQuestions.push(group);

@@ -18,10 +18,11 @@ export class DashboardComponent implements OnInit {
     this.username =  localStorage.getItem('username');
     this.surveyForm = this.builder.group({
       SurveyName: ['',Validators.required],
-      SurveyDescription: ['',Validators.required],
-      userid:1
+      SurveyDesc: ['',Validators.required],
+      OwnerId : localStorage.getItem('userid')
     });
   }
+  
   OnSurveyCreate(){
     
   }
