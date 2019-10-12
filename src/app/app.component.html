@@ -1,0 +1,18 @@
+  <div id = "mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Service</a>
+      <a href="#">Client</a>
+      <a href="#">Contact</a>
+      <a href="#" (click)="OnLogOut()">Logout</a>
+  </div>
+  <div id="main" style="width: 100% !important;">
+      
+        <app-navbar></app-navbar>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+        <footer>
+            <div class="footerposition">Survey Shrike@2019</div>
+        </footer>
+  </div>

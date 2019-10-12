@@ -1,0 +1,34 @@
+<div class="container"> 
+    <div class="register"> 
+        <h4 style="text-align: center;padding-bottom: 30px;">Create a FREE account</h4>
+
+        <form [formGroup] ="registerForm" autocomplete="off" class="form-horizontal">
+            <div class="form-group"> 
+                    <div class="row">
+                            <div class="col">
+                                    <input type="text" class="form-control" id="name" placeholder="First Name" formControlName="firstname">
+                            </div> 
+                            <div class="col">
+                                    <input type="text" class="form-control" id="lastname" placeholder="Last Name" formControlName="lastname">
+                            </div>
+                    </div>                     
+                </div>
+                <div class="form-group"> 
+                        <div class="row">
+                                <div class="col">
+                                        <input type="text" class="form-control" id="userid" placeholder="user name" formControlName="username">
+                                </div> 
+                                <div class="col">
+                                     <input type="password" class="form-control" id="password" placeholder="password" formControlName="password">
+                                </div>
+                        </div>                     
+                    </div>
+                <div class="form-group">
+                        <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email">                           
+                </div>               
+                <button type="submit" style="margin-left: 40%" class="btn btn-success" [disabled]= "!registerForm.valid" (click) = "onRegister()">Create account</button> 
+          
+        </form>                
+    </div>
+</div>
+   

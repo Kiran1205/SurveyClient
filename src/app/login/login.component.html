@@ -1,0 +1,25 @@
+<div class="container"> 
+      <div class="blackshadow">  
+          <h4 style="text-align: center;padding: bottom 10px;">Log in to your account</h4>
+          <form [formGroup] ="loginForm" autocomplete="off" class="form-horizontal">
+            <div class="form-group">
+              <label for="email">User Name:</label>
+              <input type="username" class="form-control" id="username" placeholder="Enter user name" formControlName="userName">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password" formControlName="password">
+            </div>
+             <button type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-block" [disabled]= "!loginForm.valid" (click) = "onLogin()">Log In</button>   
+             <div class="alert alert-info alert-dismissible fade show"  *ngIf = "errorMessage !=''" style="margin-top: 10px;margin-bottom: -1rem !important">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              {{errorMessage}}
+            </div>         
+          </form>                
+        </div>
+      <div class="newreg"> 
+        <h6>Don't have an account?</h6>         
+        <button type="submit" style="margin-left: 40%" class="btn btn-outline-success" (click) = "onRegister()">Sign Up</button>   
+      </div>   
+  
+</div>

@@ -1,0 +1,215 @@
+<div class="container">
+           <div class= "surveyinfo">
+                <div class="form-group" style="text-align: center;">
+                     <h4>Survey Name</h4>
+                     <h6>You’ve unlocked our paid features ― try what you like, keep what you need.</h6>
+                     
+                    
+                                <form [formGroup]="resultForm">
+                                                <div  formArrayName="questions" *ngFor="let resultfor of resultForm.get('questions').controls; let i = index;">
+                                                   <div class="surveyquestion">  
+                                                        <div [formGroupName]="i">
+                                                               <div class="row">                                                  
+                                                                     <label>Q{{i+1}}.{{resultfor.value.question}}</label>                                                      
+                                                               </div>                      
+                                                               <div  formArrayName="qoptions"  *ngFor="let itemquest of resultfor.controls.qoptions.controls; let j = index;">
+                                                                       <div [formGroupName]="j">                         
+                                                                                <div id="qcheckbox" *ngIf = "checkoptiontype(resultfor.value.questiontype,'Checkbox')">
+                                                                                        <div class="form-horizontal">
+                                                                                                <div class="form-group col-8">
+                                                                                                        <div class="row" style="display: flex;">
+                                                                                                                <div>
+                                                                                                                <input type="checkbox"  formControlName="value" readonly>    
+                                                                                                                </div>
+                                                                                                                <div>                                                                                      
+                                                                                                                                <label>{{itemquest.value.text}}</label>      
+                                                                                                                </div>
+                                                                                                                
+                                                                                                        </div>                              
+                                                                                                </div>
+                                                                                                
+                                                                                        </div>
+                                                                                </div>
+                                           
+                                                                                <div id="radiobutton" *ngIf = "checkoptiontype(resultfor.value.questiontype,'RadioButton')">
+                                                                                                <div class="form-horizontal">
+                                                                                                                <div class="form-group col-8">
+                                                                                                                        <div class="row" style="display: flex;">
+                                                                                                                                <div>
+                                                                                                                                        <input type="radio" value="text" name ="value" formControlName="value" readonly >    
+                                                                                                                                </div>
+                                                                                                                                <div>                                                                                      
+                                                                                                                                        <label>{{itemquest.value.text}}</label>    
+                                                                                                                                </div>
+                                                                                                                                
+                                                                                                                        </div>                              
+                                                                                                                </div>
+                                                                                                                
+                                                                                                        </div>
+                                                                                        
+                                                                                  </div>
+                                                                         
+                                                                                        <div id="Dropdown" *ngIf = "checkoptiontype(resultfor.value.questiontype,'Dropdown')">
+                                                                                                                                                                                               
+                                                                                                        
+                                                                                        </div>
+                                                                                        <div id="SingleLine" *ngIf = "checkoptiontype(resultfor.value.questiontype,'SingleLine')">
+                                                                                                <div class="form-horizontal">
+                                                                                                                <div class="form-group col-10">
+                                                                                                                    <input class="form-control" formControlName="value" type="text">                         
+                                                                                                                </div>
+                                                                                                                
+                                                                                                </div>
+                                                                                        </div> 
+                                                                                        <div id="MultipleLine" *ngIf = "checkoptiontype(resultfor.value.questiontype,'MultipleLine')">
+                                                                                                        <div class="form-horizontal">
+                                                                                                                        <div class="form-group col-8">
+                                                                                                                             
+                                                                                                                          <textarea class="form-control" rows="3" formControlName="value" type="text"></textarea>
+                                                                                                                                                                 
+                                                                                                                        </div>
+                                                                                                                        
+                                                                                                        </div>
+                                                                                        </div> 
+                                           
+                                                                           </div>                                        
+                                                                               
+                                                                   
+                                                                   </div>
+                                                                       
+                                                           </div>
+                                                    </div>       
+                                               </div>
+                                                </form> 
+                                                     
+                    
+                    
+                     <div class="form-group" >                     
+                                <button type="button"  class="btn btn-outline-success"  data-toggle="modal"
+                               data-target="#myModal" (click) = "addQuestion()">New Question</button>
+                     </div>                                   
+                 </div>
+                                                   
+           </div>
+                                
+           
+               
+</div>
+<div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-lg">
+      <form [formGroup]="orderForm">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Adding Question</h4>
+            <button type="button" class="close" data-dismiss="modal" (click) ="closeform()">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+                          <div formArrayName="questions"
+                          *ngFor="let item of orderForm.get('questions').controls; let i = index;">
+                                      <div [formGroupName]="i">
+                                          <div class="row">
+                                                  <div class="form-group col-8">
+                                                      <label>Question</label>
+                                                      <input class="form-control" formControlName="question" type="text" placeholder="enter question">
+                                                  
+                                                  </div>
+                                                  <div class="form-group col-4">
+                                                          <label>Type of Question</label>
+                                                          <select (change)="changedFieldType(i,$event)" class="form-control" formControlName="questiontype" type="text">
+                                                              <option value="SingleLine">Single Line</option>
+                                                              <option value="MultipleLine">Multiple Line</option>
+                                                              <option value="RadioButton">RadioButton</option>
+                                                              <option value="Checkbox">Select</option>
+                                                              <option value="Dropdown">Dropdown</option>                          
+                                                          </select>
+                                                  </div>
+                                          </div>
+                      
+                                          <div  formArrayName="qoptions"  *ngFor="let item2 of item.controls.qoptions.controls; let j = index;">
+                                                  <div [formGroupName]="j">                         
+                                                                   <div id="qcheckbox" *ngIf = "checkoptiontype(item.value.questiontype,'Checkbox')">
+                                                                      <div class="form-horizontal">
+                                                                              <div class="form-group col-8">
+                                                                              <div class="row" style="display: flex;">
+                                                                                  <div>
+                                                                                          <input type="checkbox"  readonly >    
+                                                                                  </div>                                                                                      
+                                                                                  <div  style="width: 80% !important; padding-left: 10px;">
+                                                                                  <input class="form-control" formControlName="text" type="text" placeholder="enter option"> 
+                                                                                  </div>
+                                                                                  <div>
+                                                                                          <a (click) ="addoption(i)" style="padding-right: 5px !important;padding-left: 5px;" ><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+                                                                                          <a (click) ="removeoption(i,j)"><i class="fa fa-minus-circle fa-2x" aria-hidden="true"></i></a> 
+                                                                                  </div>
+                                                                              </div>
+                              
+                                                                              </div>
+                                                                              
+                                                                      </div>
+                                                                  </div>
+                      
+                                                                  <div id="radiobutton" *ngIf = "checkoptiontype(item.value.questiontype,'RadioButton')">
+                                                                          <div class="form-horizontal">
+                                                                                  <div class="form-group col-8">
+                                                                                  <div class="row" style="display: flex;">
+                                                                                      <div>
+                                                                                              <input type="radio"  readonly >    
+                                                                                      </div>                                                                                      
+                                                                                      <div  style="width: 80% !important; padding-left: 10px;">
+                                                                                      <input class="form-control" formControlName="text" type="text" placeholder="enter option"> 
+                                                                                      </div>
+                                                                                      <div>
+                                                                                              <a (click) ="addoption(i)" style="padding-right: 5px !important;padding-left: 5px;" ><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+                                                                                              <a (click) ="removeoption(i,j)"><i class="fa fa-minus-circle fa-2x" aria-hidden="true"></i></a> 
+                                                                                      </div>
+                                                                                  </div>
+                                  
+                                                                                  </div>
+                                                                                  
+                                                                          </div>
+                                                                      </div>
+                                                                      <div id="Dropdown" *ngIf = "checkoptiontype(item.value.questiontype,'Dropdown')">
+                                                                              <div class="form-horizontal">
+                                                                                      <div class="form-group col-8">
+                                                                                      <div class="row" style="display: flex;">
+                                                                                      <div  style="width: 80% !important; padding-left: 10px;">
+                                                                                          <input class="form-control" formControlName="text" type="text" placeholder="enter option"> 
+                                                                                          </div>
+                                                                                          <div>
+                                                                                                  <a (click) ="addoption(i)" style="padding-right: 5px !important;padding-left: 5px;" ><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></a>
+                                                                                                  <a (click) ="removeoption(i,j)"><i class="fa fa-minus-circle fa-2x" aria-hidden="true"></i></a> 
+                                                                                          </div>
+                                                                                      </div>
+                                      
+                                                                                      </div>
+                                                                                      
+                                                                              </div>
+                                                                          </div>
+                                                                          
+                      
+                                                      </div>                                        
+                                                          
+                                              
+                                              </div>
+                                                  
+                                      </div>
+                          </div>                        
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-success" data-dismiss="modal" (click) ="SaveQuestion()">Save</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click) ="closeform()">Close</button>
+          </div>
+          
+        </div>
+      </form>
+      </div>
+</div>
+
+
+

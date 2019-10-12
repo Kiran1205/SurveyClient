@@ -1,0 +1,97 @@
+<div style="padding-top: 15px !important;">
+        <p>Welcome back, {{username}}!</p>
+</div>
+<div>    
+    <div class="row dashboardcount">
+        <div class="col-sm-3">Open
+            <h4>0</h4>
+        </div>
+        <div class="col-sm-3">Closed
+                <h4>0</h4>
+        </div>
+        <div class="col-sm-3">Total Response
+                <h4>0</h4>
+        </div>
+    </div>
+    <div>
+        <div style = "margin-top:30px;">
+        <span>Recent Surveys</span>
+        <a href="#" style="margin-left: 60%;">Manage Surveys</a>
+        </div>
+        <div class="row recentsurvey">
+            <div class="col-sm-8">
+                    <h6>First Survery</h6>
+                    <span style="font-size: 12px;">Created on:10/09/2019</span>
+                    <span> | </span>
+                    <span style="font-size: 12px;">Last Date:20/09/2019</span>
+            </div>
+            <div class="col-sm-1.5 " style="text-align: center;">
+                        <ul>Questions</ul>
+                        <ul>100</ul>
+                </div>
+            <div class="col-sm-1.5" style="text-align: center;">
+                    <ul>Response</ul>
+                    <ul>100</ul>
+            </div>
+            
+        </div>
+        <div class="row recentsurvey">
+                <div class="col-sm-8">
+                        <h6>Second Survery</h6>
+                        <span style="font-size: 12px;">Created on:10/09/2019</span>
+                        <span> | </span>
+                        <span style="font-size: 12px;">Last Date:20/09/2019</span>
+                </div>
+                <div class="col-sm-1.5" style="text-align: center;">
+                        <ul>Questions</ul>
+                        <ul>100</ul>
+                </div>
+                <div class="col-sm-1.5" style="text-align: center;">
+                        <ul>Response</ul>
+                        <ul>100</ul>
+                </div>
+            </div>
+            <button type="submit" style="float:left; margin-left: 10px;margin-top: 10px;" class="btn btn-outline-success"  data-toggle="modal"
+            data-target="#myModal"  >CREATE SURVEY</button>
+    </div>                    
+</div>
+<div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+               
+                  <div class="modal-content">
+                     <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Create Survey</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                <div class="modal-body">
+                
+                <form [formGroup]="surveyForm">
+                
+                        <div class="form-group">
+                                <label>Enter Survey Name</label>
+                                <input class="form-control" formControlName="SurveyName" type="text" placeholder="Survey Title">                
+                        </div>
+                        <div class="form-group">
+                                <label>Survey Description</label>
+                                <textarea class="form-control" rows="3" formControlName="SurveyDescription" type="text" placeholder="Survey Description"></textarea>
+                                                
+                        </div>                                   
+                
+                </form>
+                        </div>
+          
+             <!-- Modal footer -->
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-success" data-dismiss="modal" [disabled]= "!surveyForm.valid"  (click) ="CreateSurvey()">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+        </div>
+        
+      </div>
+</div>
+
+      
+
