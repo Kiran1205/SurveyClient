@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-questiondesigning',
@@ -35,29 +36,31 @@ export class QuestiondesigningComponent implements OnInit {
     return this.formBuilder.group({
       question: ['',Validators.required],
       questiontype: ['',Validators.required],
-      qoptions:this.formBuilder.array([this.createoptions(1)])
-         
+      qoptions:this.formBuilder.array([this.createoptions(1)]),
+           
     });
   }
 
   createoptions(index) : FormGroup{
     return this.formBuilder.group({
       question:index,
-      text: '',
-      value: '',
-      name:"radiopur"   
+      opttext: '',
+      selectedvalue: ''  
     });
   }
-
-  checkoptiontype(opttype,cate):boolean
+  getdropdownvalues(i){
+     var questionse = this.resultForm.get('questions') as FormArray;
+     var question = questionse.controls[i] as FormGroup;     
+     var opt = question.get('qoptions')  as FormArray;     
+     return opt.value;
+  }
+  checkoptiontype(questiontype,questioncat):boolean
   {
-    console.log(opttype,cate);
-    if(opttype == cate)
-    {     
+   if(questiontype == questioncat){     
       return true;
-    }
-    else
-    return false
+    }else{
+      return false
+    }    
   }
 
    addoption(index):void{ 
@@ -74,9 +77,8 @@ export class QuestiondesigningComponent implements OnInit {
   }
 
   addQuestion(): void {
-    this.questions = this.orderForm.get('questions') as FormArray;
-    this.questions.push(this.createQuestions());
-    
+    this.questions = this.orderForm.get('questions') as FormArray;    
+      this.questions.push(this.createQuestions());    
   }
   closeform(){
     this.questions.clear();
@@ -92,12 +94,24 @@ export class QuestiondesigningComponent implements OnInit {
       this.addoption(index);
     }
   }
-
+  deletequetion(index){
+    this.savedQuestions = this.resultForm.get('questions') as FormArray;  
+    this.savedQuestions.removeAt(index);
+  }
   SaveQuestion(){
     this.savedQuestions = this.resultForm.get('questions') as FormArray;
-    var group = this.questions.controls[0] as FormGroup
+    var group = this.questions.controls[0] as FormGroup;   
     this.savedQuestions.push(group);
     this.questions.clear();
-  } 
+  }
+  SaveSurvey(){
+    this.savedQuestions = this.resultForm.get('questions') as FormArray;
+    if(this.savedQuestions.length  <=3){
+      alert("Minimum three question required");
+    }
+    else{
+
+    }
+  }  
 }
 

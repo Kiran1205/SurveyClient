@@ -1,6 +1,9 @@
 input[type="checkbox"][readonly] {
     pointer-events: none;
   }
+  input[type="text"][readonly] {
+    pointer-events: none;
+  }
   input[type="checkbox"]{
     width: 25px; /*Desired width*/
     height: 25px; 
@@ -30,8 +33,8 @@ input[type="checkbox"][readonly] {
       margin-left: 5%;
       padding-left: 20px;
       margin-top: 2%;
-      margin-right: 5%;
+      margin-right: 10%;
       background-color: #80808026;
       margin-bottom: 10px;
-      padding-bottom: 10px;
+      padding-bottom: 10px;      
   }
