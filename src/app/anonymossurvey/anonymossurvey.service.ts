@@ -12,8 +12,7 @@ export class AnonymousService extends BaseHttpService{
     }
 
   
-    GetSurveInfo(id : any):Observable<any> {
-        console.log("in service id"+id);
+    GetSurveInfo(id : any):Observable<any> {       
         return this.get('GetSurveInfo\?id='+id,this.COMMON_JSON_HEADER_REQUEST);
     }
     GetBySurveyQuestionsUID(id : number):Observable<any>      {

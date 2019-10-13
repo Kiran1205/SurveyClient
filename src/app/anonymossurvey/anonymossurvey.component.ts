@@ -26,7 +26,7 @@ export class AnonymossurveyComponent implements OnInit {
               this.route.queryParams.subscribe(params => {
                
               this.surveyguid = params['survey']; 
-              console.log(this.surveyguid)    
+               
         });
   }
 
@@ -47,7 +47,7 @@ export class AnonymossurveyComponent implements OnInit {
     return this.formBuilder.group({
       id:questionerver.id,
       ques: questionerver.ques,
-      questionType:questionerver.questionType,
+      questionType:questionerver.questionType,      
       surveyId :questionerver.surveyId,
       qoptions:this.formBuilder.array([]),           
     });
@@ -89,4 +89,9 @@ export class AnonymossurveyComponent implements OnInit {
 });
  
 }
+
+SubmitSurvey(){
+  console.log(this.resultForm.value);
+}
+
 }
