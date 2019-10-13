@@ -30,11 +30,12 @@ export class QuestiondesigningComponent implements OnInit {
               private questionService : QuestionService) {
 
               this.surveyid  = this.router.getCurrentNavigation().extras;
+              console.log(this.surveyid);
         }
 
   ngOnInit() {
-
-    this.surveyService.GetById(this.surveyid).subscribe((response : any ) =>{
+    console.log("surveyid"+this.surveyid);
+    this.surveyService.GetBySurveyID(this.surveyid).subscribe((response : any ) =>{
       this.survey = response;
     });
  
@@ -44,7 +45,7 @@ export class QuestiondesigningComponent implements OnInit {
     this.resultForm = this.formBuilder.group({
          questions: this.formBuilder.array([])      
     });
-
+    this.loaddata();
   }
 
   
@@ -147,23 +148,23 @@ export class QuestiondesigningComponent implements OnInit {
   }
 
 
-  // loaddata()  {
+  loaddata()  {
     
-  //   this.questionService.GetById(this.surveyid).subscribe((response : any ) =>{    
-  //     response.forEach(element => {
-  //       this.savedQuestions = this.resultForm.get('questions') as FormArray;
-  //       var formgroupupdate = this.updateQuestions(element) as FormGroup;  
+     this.questionService.GetById(this.surveyid).subscribe((response : any ) =>{    
+       response.forEach(element => {
+       this.savedQuestions = this.resultForm.get('questions') as FormArray;
+       var formgroupupdate = this.updateQuestions(element) as FormGroup;  
        
-  //       var opt = formgroupupdate.get('qoptions')  as FormArray;   
-  //       element.qoptions.forEach(evertoption => {       
-  //         opt.push(this.updateoptions(evertoption));
-  //       });
-  //       this.savedQuestions.push(formgroupupdate); 
+       var opt = formgroupupdate.get('qoptions')  as FormArray;   
+        element.qoptions.forEach(evertoption => {       
+         opt.push(this.updateoptions(evertoption));
+       });
+       this.savedQuestions.push(formgroupupdate); 
         
-  //     });
-  //   });
+     });
+   });
     
-  // }
+  }
 
   SaveSurvey(){
     this.surveyService.GetSurveyLink(this.surveyid).subscribe((response : any ) =>{      

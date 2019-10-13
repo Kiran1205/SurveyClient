@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestiondesigningComponent } from './questiondesigning/questiondesigning.component';
 import { SurveyService } from './SharedService/SurveyService.service';
 import { QuestionService } from './SharedService/QuestionService.service';
+import { ManagesurveyComponent } from './managesurvey/managesurvey.component';
 
 
 export function JwtoptionsFactory(storeage) {
@@ -40,7 +41,8 @@ export function tokenGetter(){
     RegisterComponent,
     NavbarComponent,
     DashboardComponent,
-    QuestiondesigningComponent
+    QuestiondesigningComponent,
+    ManagesurveyComponent
   ],
   imports: [
     BrowserModule,    

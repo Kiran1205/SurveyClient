@@ -14,7 +14,7 @@ export class BaseHttpService {
  }
 
  protected get(path : string, options : any) {
-    let url = this.getEndPoint(path);
+    let url = this.getEndPoint(path);    
     return this.http.get(url,options);
  }
 

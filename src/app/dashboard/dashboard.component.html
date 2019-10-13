@@ -35,31 +35,33 @@
 <div>    
     <div>
         <div style = "margin-top:30px;">
-        <span>Recent Surveys</span>
-        <a href="#" style="float: right;">Manage Surveys</a>
+        <span>Recent Surveys (Last two records)</span>          
         </div>
-        <div class="card bg-light">
-                <div class="card-header">First Survey  :-  Draft</div>
-                <div class="card-body">
-                      <div class="row">
-                        <div class="form-group col-6">
-                                <h6 class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</h6>
-                                <p class="card-text">Created on:10/09/2019 | Last Date:20/09/2019</p>
-                        </div>
-                        <div class="form-group col-3" style="text-align: center;">
-                                <p class="card-text">Questions</p>
-                                <p class="card-text">10</p>
-                        </div>
-                        <div class="form-group col-3" style="text-align: center;">
-                                        <p class="card-text">Response</p>
-                                        <p class="card-text">10</p>
-                        </div>
-                   </div>
-                        
-                </div>
-        </div>      
+        <div  *ngFor="let survey of surveylist; let i = index;">
+          <div class="card bg-light">
+                  <div class="card-header">{{survey.surveyName}}  :-  Live -{{survey.isLive}}</div>
+                  <div class="card-body">
+                        <div class="row">
+                          <div class="form-group col-6">
+                                  <h6  style="font-size:14px ;">{{survey.surveyDesc}}</h6>
+                                  <p  style="font-size:12px ;">Created on: {{survey.createdOn}} | Last Date: {{survey.expDate}}</p>
+                          </div>
+                          <div class="form-group col-3" style="text-align: center;">
+                                  <p class="card-text">Questions</p>
+                                  <p class="card-text">10</p>
+                          </div>
+                          <div class="form-group col-3" style="text-align: center;">
+                                          <p class="card-text">Response</p>
+                                          <p class="card-text">10</p>
+                          </div>
+                    </div>
+                          
+                  </div>
+          </div>
+      </div>      
           <button type="submit" style="float:left; margin-left: 10px;margin-top: 10px;" class="btn btn-outline-success"  data-toggle="modal"
             data-target="#myModal"  >CREATE SURVEY</button>
+            <button type="submit"   style="float:left; margin-left: 10px;margin-top: 10px;" class="btn btn-outline-success"  (click)= "navigatetoSurvey()">Manage Surveys</button>   
     </div>                    
 </div>
 <div class="modal fade" id="myModal">

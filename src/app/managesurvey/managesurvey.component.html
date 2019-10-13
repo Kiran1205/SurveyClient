@@ -1,0 +1,39 @@
+<div style="padding-top: 15px !important;">
+    <p>Welcome back, {{username}}!</p>
+</div>
+<div class="container">
+    <h4>All Surveys</h4>             
+    <table class="table table-hover" *ngIf ="allSurveys">
+      <thead>
+        <tr>
+          <th>Survey Name</th>
+          <th>Survey Desc</th>
+          <th>Created on</th>
+          <th>Exp Date</th>         
+          <th>Survey Link</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor = "let item of allSurveys">
+                  <td>{{item.surveyName}}</td>
+                  <td>{{item.surveyDesc}}</td>
+                  <td>{{item.createdOn}}</td> 
+                  <td>{{item.expDate}}</td> 
+                  <td>
+                        <button type="submit" class="btn btn-success"  (click)= "GetSurveyLink(item.id)">Survey Link</button>  
+                  </td>
+                  <td>
+                        <button type="submit" class="btn btn-info"  (click)= "EditSurvey(item.id)">Edit</button>  
+                  </td>                 
+                  <td>
+                        <button type="submit" class="btn btn-danger"  (click)= "deleteSurvey(item.id)">Delete</button>  
+                  </td>
+                               
+            </tr>
+        
+      </tbody>
+    </table>
+  </div>
+

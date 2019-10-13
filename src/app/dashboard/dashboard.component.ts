@@ -15,12 +15,13 @@ export class DashboardComponent implements OnInit {
   formcountdisplay : any;
   surveyForm: FormGroup;
   statistics = {
-    OpenSurveys :0,
-    ClosedSurveys:0,
-    DraftSurveys:0,
-    TotalResponse:0
+    openSurveys :0,
+    closedSurveys:0,
+    draftSurveys:0,
+    totalResponse:0
   }
   userid:any;
+  surveylist : any;
   constructor(private builder :FormBuilder,
     private router : Router,
     private surveyService : SurveyService) { }
@@ -37,16 +38,19 @@ export class DashboardComponent implements OnInit {
     this.surveyService.GetStatistics(this.userid).subscribe((result : any ) =>{   
       this.statistics = result;
     });
+    this.surveyService.GetLastTwoSurvey(this.userid).subscribe((result : any ) =>{
+      console.log(result); 
+      this.surveylist = result;
+    });
 
+  }
+  navigatetoSurvey(){
+    this.router.navigate(['survey']);
   }
   
-  OnSurveyCreate(){
-    
-  }
-  CreateSurvey(){
-    
+  CreateSurvey(){    
     this.surveyService.create(this.surveyForm.value).subscribe((result : any ) =>{    
-
+      console.log(result.id);
       this.router.navigate(['questiondes'], result.id);
       
     },(error : HttpResponse<any>) => {

@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestiondesigningComponent } from './questiondesigning/questiondesigning.component';
+import { ManagesurveyComponent } from './managesurvey/managesurvey.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path:"dashboard",component:DashboardComponent  },
   { path:"register",component:RegisterComponent},
   {path:"questiondes",component:QuestiondesigningComponent},
+  {path:"survey",component:ManagesurveyComponent},
   { path:'',component:DashboardComponent   }
 ];
 

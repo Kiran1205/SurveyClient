@@ -6,5 +6,6 @@
         <a href="#" [routerLink]="['login']"  *ngIf = "!isAuthorized" routerLinkActive="active" style=" float: right !important;">Login</a>    
         
         <a  href="#" [routerLink]="['dashboard']" *ngIf = "isAuthorized"  routerLinkActive="active"><i class="fa fa-home" title="Dashboard"></i>Dashboard</a>
+        <a  href="#" [routerLink]="['survey']" *ngIf = "isAuthorized"  routerLinkActive="active"><i class="fa fa-home" title="MySurvey"></i>Survey</a>
         <a (click) ="OnLogOut()" *ngIf = "isAuthorized" style=" float: right !important;margin-right: 30px !important"><i class="fa fa-sign-out" title="Logout"></i></a>   
       </div>
