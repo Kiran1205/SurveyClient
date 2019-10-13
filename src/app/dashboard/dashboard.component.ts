@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
       this.statistics = result;
     });
     this.surveyService.GetLastTwoSurvey(this.userid).subscribe((result : any ) =>{
-      console.log(result); 
+      
       this.surveylist = result;
     });
 
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
   
   CreateSurvey(){    
     this.surveyService.create(this.surveyForm.value).subscribe((result : any ) =>{    
-      console.log(result.id);
+     
       this.router.navigate(['questiondes'], result.id);
       
     },(error : HttpResponse<any>) => {

@@ -18,7 +18,7 @@ export class SurveyService extends BaseHttpService{
         return this.delete(`${id}`,this.COMMON_JSON_HEADER_REQUEST);
     }
     GetBySurveyID(id : number):Observable<any> {
-        console.log("in service id"+id);
+      
         return this.get('GetSurveyByID\?surveyid='+id,this.COMMON_JSON_HEADER_REQUEST);
     }
     GetSurveyLink(id : number):Observable<any>      {

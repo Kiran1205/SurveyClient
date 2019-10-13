@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit, DoCheck{
   
   ngDoCheck(){
     this.isAuthorized = this.authService.isAuthenticated();
-    console.log(this.router.url);
+    
   }
 
 }

@@ -52,8 +52,7 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['dashboard']);
         
-      },(respo : HttpResponse<any>) => {
-        console.log(respo);
+      },(respo : HttpResponse<any>) => {      
         this.errorMessage = respo.statusText;          
       });
 

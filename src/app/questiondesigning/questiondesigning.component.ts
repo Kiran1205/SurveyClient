@@ -30,11 +30,11 @@ export class QuestiondesigningComponent implements OnInit {
               private questionService : QuestionService) {
 
               this.surveyid  = this.router.getCurrentNavigation().extras;
-              console.log(this.surveyid);
+            
         }
 
   ngOnInit() {
-    console.log("surveyid"+this.surveyid);
+  
     this.surveyService.GetBySurveyID(this.surveyid).subscribe((response : any ) =>{
       this.survey = response;
     });
