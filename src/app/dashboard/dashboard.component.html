@@ -1,57 +1,64 @@
 <div style="padding-top: 15px !important;">
         <p>Welcome back, {{username}}!</p>
 </div>
+
+
+<div class="container">
+         <div class="card-deck">
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="card-text">Open : {{ statistics.openSurveys}}</p>
+              
+           </div>
+          </div>
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="card-text">Close : {{statistics.closedSurveys}}</p>              
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="card-text">Draft :  {{statistics.draftSurveys}}</p>              
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body text-center">
+              <p class="card-text">Total Response : {{statistics.totalResponse}}</p>
+              
+            </div>
+          </div>  
+        </div>
+      </div>
+
+      
+
 <div>    
-    <div class="row dashboardcount">
-        <div class="col-sm-3">Open
-            <h4>0</h4>
-        </div>
-        <div class="col-sm-3">Closed
-                <h4>0</h4>
-        </div>
-        <div class="col-sm-3">Total Response
-                <h4>0</h4>
-        </div>
-    </div>
     <div>
         <div style = "margin-top:30px;">
         <span>Recent Surveys</span>
-        <a href="#" style="margin-left: 60%;">Manage Surveys</a>
+        <a href="#" style="float: right;">Manage Surveys</a>
         </div>
-        <div class="row recentsurvey">
-            <div class="col-sm-8">
-                    <h6>First Survery</h6>
-                    <span style="font-size: 12px;">Created on:10/09/2019</span>
-                    <span> | </span>
-                    <span style="font-size: 12px;">Last Date:20/09/2019</span>
-            </div>
-            <div class="col-sm-1.5 " style="text-align: center;">
-                        <ul>Questions</ul>
-                        <ul>100</ul>
+        <div class="card bg-light">
+                <div class="card-header">First Survey  :-  Draft</div>
+                <div class="card-body">
+                      <div class="row">
+                        <div class="form-group col-6">
+                                <h6 class="card-title">Some quick example text to build on the card title and make up the bulk of the card's content.</h6>
+                                <p class="card-text">Created on:10/09/2019 | Last Date:20/09/2019</p>
+                        </div>
+                        <div class="form-group col-3" style="text-align: center;">
+                                <p class="card-text">Questions</p>
+                                <p class="card-text">10</p>
+                        </div>
+                        <div class="form-group col-3" style="text-align: center;">
+                                        <p class="card-text">Response</p>
+                                        <p class="card-text">10</p>
+                        </div>
+                   </div>
+                        
                 </div>
-            <div class="col-sm-1.5" style="text-align: center;">
-                    <ul>Response</ul>
-                    <ul>100</ul>
-            </div>
-            
-        </div>
-        <div class="row recentsurvey">
-                <div class="col-sm-8">
-                        <h6>Second Survery</h6>
-                        <span style="font-size: 12px;">Created on:10/09/2019</span>
-                        <span> | </span>
-                        <span style="font-size: 12px;">Last Date:20/09/2019</span>
-                </div>
-                <div class="col-sm-1.5" style="text-align: center;">
-                        <ul>Questions</ul>
-                        <ul>100</ul>
-                </div>
-                <div class="col-sm-1.5" style="text-align: center;">
-                        <ul>Response</ul>
-                        <ul>100</ul>
-                </div>
-            </div>
-            <button type="submit" style="float:left; margin-left: 10px;margin-top: 10px;" class="btn btn-outline-success"  data-toggle="modal"
+        </div>      
+          <button type="submit" style="float:left; margin-left: 10px;margin-top: 10px;" class="btn btn-outline-success"  data-toggle="modal"
             data-target="#myModal"  >CREATE SURVEY</button>
     </div>                    
 </div>

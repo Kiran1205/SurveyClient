@@ -17,5 +17,11 @@ export class SurveyService extends BaseHttpService{
     GetById(id : number):Observable<any>      {
         return this.get(`${id}`,this.COMMON_JSON_HEADER_REQUEST);
     }
+    GetSurveyLink(id : number):Observable<any>      {
+        return this.get('GetSurveyLink\?id='+id,this.COMMON_JSON_HEADER_REQUEST);
+    }
+    GetStatistics(id : number):Observable<any>      {
+        return this.get('GetStatistics\?userid='+id,this.COMMON_JSON_HEADER_REQUEST);
+    }
     
 }

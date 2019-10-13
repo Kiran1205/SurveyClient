@@ -14,11 +14,19 @@ export class DashboardComponent implements OnInit {
   username = '';
   formcountdisplay : any;
   surveyForm: FormGroup;
+  statistics = {
+    OpenSurveys :0,
+    ClosedSurveys:0,
+    DraftSurveys:0,
+    TotalResponse:0
+  }
+  userid:any;
   constructor(private builder :FormBuilder,
     private router : Router,
     private surveyService : SurveyService) { }
 
   ngOnInit() {
+    this.userid = localStorage.getItem('userid');
     this.username =  localStorage.getItem('username');
     this.surveyForm = this.builder.group({
       SurveyName: ['',Validators.required],
@@ -26,6 +34,10 @@ export class DashboardComponent implements OnInit {
       OwnerId : localStorage.getItem('userid'),
       ExpDate:['',Validators.required]
     });
+    this.surveyService.GetStatistics(this.userid).subscribe((result : any ) =>{   
+      this.statistics = result;
+    });
+
   }
   
   OnSurveyCreate(){
@@ -38,13 +50,7 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['questiondes'], result.id);
       
     },(error : HttpResponse<any>) => {
-        if(error.status == 401)
-        {
-         // this.errorMessage ="Login failed.please try again.";
-        }
-        else{
-          //this.errorMessage ="Unabe to Process request";
-        }
+      alert(error.statusText);
     });
    
   }

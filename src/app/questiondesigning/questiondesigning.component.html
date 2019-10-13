@@ -9,7 +9,7 @@
                                 <div [formGroupName]="i">
                                         <div class="row">
                                                 <div id ="deletequetion" style="margin-right: 0%;"> 
-                                                                <a (click) ="deletequetion(i)" ><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a> 
+                                                                <a (click) ="deletequetion(i,resultfor.value.id)" ><i class="fa fa-trash fa-2x" aria-hidden="true"></i></a> 
                                                 </div>                                                    
                                                 <label>Q{{i+1}}.{{resultfor.value.ques}}</label>
                                                                                                           
@@ -25,7 +25,7 @@
                                                                                         <input type="checkbox"  formControlName="selectedvalue" readonly>    
                                                                                         </div>
                                                                                         <div>                                                                                      
-                                                                                                        <label>{{itemquest.value.optionDetail}}</label>      
+                                                                                           <label>{{itemquest.value.optionDetail}}</label>      
                                                                                         </div>
                                                                                         
                                                                                 </div>                              
@@ -77,13 +77,9 @@
                                                                                 </div>
                                                                                 
                                                                         </div>
-                                                                </div> 
-                        
-                                                        </div>                                        
-                                                        
-                                                
+                                                                </div>                         
+                                                        </div>
                                                 </div>
-                                                
                                 </div>
                                
                         </div>

@@ -28,7 +28,7 @@ export class BaseHttpService {
     return this.http.put(url, data, options);
  }
  
- protected Delete(path : string,  options : any) {
+ protected delete(path : string,  options : any) {
     let url = this.getEndPoint(path);
     return this.http.delete(url, options);
  }

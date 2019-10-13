@@ -20,13 +20,17 @@ export class QuestiondesigningComponent implements OnInit {
   questionstype:any;
   btnvisble = false;
   surveyid:any;
-  survey:any;
+  survey = {
+    surveyName:'',
+    surveyDesc:''
+  };
   constructor(private formBuilder: FormBuilder,
-    private router : Router,
-    private surveyService : SurveyService,
-    private questionService : QuestionService) {
-    this.surveyid  = this.router.getCurrentNavigation().extras;
-  }
+              private router : Router,
+              private surveyService : SurveyService,
+              private questionService : QuestionService) {
+
+              this.surveyid  = this.router.getCurrentNavigation().extras;
+        }
 
   ngOnInit() {
 
@@ -82,8 +86,7 @@ export class QuestiondesigningComponent implements OnInit {
      var opt = question.get('qoptions')  as FormArray;     
      return opt.value;
   }
-  checkoptiontype(questiontype, questioncat):boolean
-  {
+  checkoptiontype(questiontype, questioncat):boolean  {
    if(questiontype == questioncat){     
       return true;
     }else{
@@ -121,9 +124,11 @@ export class QuestiondesigningComponent implements OnInit {
       this.addoption(index);
     }
   }
-  deletequetion(index){
-    this.savedQuestions = this.resultForm.get('questions') as FormArray;  
-    this.savedQuestions.removeAt(index);
+  deletequetion(index, questionId){
+    this.savedQuestions = this.resultForm.get('questions') as FormArray;    
+    this.questionService.remove(questionId).subscribe((response : any ) =>{
+      this.savedQuestions.removeAt(index);
+    });
   }
   SaveQuestionlocally(){
     var group = this.questions.controls[0] as FormGroup; 
@@ -161,8 +166,9 @@ export class QuestiondesigningComponent implements OnInit {
   // }
 
   SaveSurvey(){
-    //this.savedQuestions = this.resultForm.get('questions') as FormArray;
-    console.log(this.resultForm.value);
+    this.surveyService.GetSurveyLink(this.surveyid).subscribe((response : any ) =>{      
+      this.router.navigate(['dashboard'])
+    });
   }  
 }
 

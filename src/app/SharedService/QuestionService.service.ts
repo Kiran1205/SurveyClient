@@ -17,5 +17,8 @@ export class QuestionService extends BaseHttpService{
     GetById(id : number):Observable<any>      {
         return this.get(`${id}`,this.COMMON_JSON_HEADER_REQUEST);
     }
+    remove(id : number):Observable<any>    {
+        return this.delete(`${id}`,this.COMMON_JSON_HEADER_REQUEST);
+    }
     
 }
