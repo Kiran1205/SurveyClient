@@ -15,5 +15,5 @@ export class LoginService extends BaseHttpService{
     }
     register(data : any)    {
         return this.post('register',data,this.COMMON_JSON_HEADER_REQUEST);
-}
+    }
 }

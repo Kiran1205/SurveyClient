@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Alert } from 'selenium-webdriver';
+import { Router } from '@angular/router';
+import { SurveyService } from '../SharedService/SurveyService.service';
+import { QuestionService } from '../SharedService/QuestionService.service';
 
 @Component({
   selector: 'app-questiondesigning',
@@ -16,35 +19,60 @@ export class QuestiondesigningComponent implements OnInit {
   questions: FormArray;
   questionstype:any;
   btnvisble = false;
-  constructor(private formBuilder: FormBuilder) {}
+  surveyid:any;
+  survey:any;
+  constructor(private formBuilder: FormBuilder,
+    private router : Router,
+    private surveyService : SurveyService,
+    private questionService : QuestionService) {
+    this.surveyid  = this.router.getCurrentNavigation().extras;
+  }
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group({
-      customerName: '',
-      email: '',
+
+    this.surveyService.GetById(this.surveyid).subscribe((response : any ) =>{
+      this.survey = response;
+    });
+ 
+    this.orderForm = this.formBuilder.group({     
       questions: this.formBuilder.array([])      
     });
     this.resultForm = this.formBuilder.group({
-      customerName: '',
-      email: '',
-      questions: this.formBuilder.array([])      
+         questions: this.formBuilder.array([])      
     });
 
   }
 
+  
+  updateQuestions(questionerver): FormGroup {
+    return this.formBuilder.group({
+      id:questionerver.id,
+      ques: questionerver.ques,
+      questionType:questionerver.questionType,
+      surveyId :questionerver.surveyId,
+      qoptions:this.formBuilder.array([]),           
+    });
+  }
+  updateoptions(element) : FormGroup{
+    return this.formBuilder.group({
+      questionId:element.questionId,
+      optionDetail: element.optionDetail,
+      selectedvalue: ''  
+    });
+  }
   createQuestions(): FormGroup {
     return this.formBuilder.group({
-      question: ['',Validators.required],
-      questiontype: ['',Validators.required],
-      qoptions:this.formBuilder.array([this.createoptions(1)]),
-           
+      id:0,
+      ques: ['',Validators.required],
+      questionType: ['',Validators.required],
+      surveyId :this.surveyid,
+      qoptions:this.formBuilder.array([this.createoptions(1)]),           
     });
   }
-
   createoptions(index) : FormGroup{
     return this.formBuilder.group({
-      question:index,
-      opttext: '',
+      questionId:0,
+      optionDetail: '',
       selectedvalue: ''  
     });
   }
@@ -54,7 +82,7 @@ export class QuestiondesigningComponent implements OnInit {
      var opt = question.get('qoptions')  as FormArray;     
      return opt.value;
   }
-  checkoptiontype(questiontype,questioncat):boolean
+  checkoptiontype(questiontype, questioncat):boolean
   {
    if(questiontype == questioncat){     
       return true;
@@ -89,8 +117,7 @@ export class QuestiondesigningComponent implements OnInit {
     this.questions = this.orderForm.get('questions') as FormArray;
     var question = this.questions.controls[index] as FormGroup
     var opt = question.get('qoptions')  as FormArray;
-    if(opt.length == 0)
-    {
+    if(opt.length == 0)  {
       this.addoption(index);
     }
   }
@@ -99,19 +126,43 @@ export class QuestiondesigningComponent implements OnInit {
     this.savedQuestions.removeAt(index);
   }
   SaveQuestionlocally(){
-    this.savedQuestions = this.resultForm.get('questions') as FormArray;
-    var group = this.questions.controls[0] as FormGroup;   
-    this.savedQuestions.push(group);
+    var group = this.questions.controls[0] as FormGroup; 
+ 
+    this.questionService.create(group.value).subscribe((response : any ) =>{
+      this.savedQuestions = this.resultForm.get('questions') as FormArray;
+      var formgroupupdate = this.updateQuestions(response) as FormGroup; 
+      var opt = formgroupupdate.get('qoptions')  as FormArray;  
+       response.qoptions.forEach(evertoption => {       
+        opt.push(this.updateoptions(evertoption));
+      });
+      this.savedQuestions.push(formgroupupdate); 
+    });
+
     this.questions.clear();
   }
-  SaveSurvey(){
-    this.savedQuestions = this.resultForm.get('questions') as FormArray;
-    if(this.savedQuestions.length  <=3){
-      alert("Minimum three question required");
-    }
-    else{
 
-    }
+
+  // loaddata()  {
+    
+  //   this.questionService.GetById(this.surveyid).subscribe((response : any ) =>{    
+  //     response.forEach(element => {
+  //       this.savedQuestions = this.resultForm.get('questions') as FormArray;
+  //       var formgroupupdate = this.updateQuestions(element) as FormGroup;  
+       
+  //       var opt = formgroupupdate.get('qoptions')  as FormArray;   
+  //       element.qoptions.forEach(evertoption => {       
+  //         opt.push(this.updateoptions(evertoption));
+  //       });
+  //       this.savedQuestions.push(formgroupupdate); 
+        
+  //     });
+  //   });
+    
+  // }
+
+  SaveSurvey(){
+    //this.savedQuestions = this.resultForm.get('questions') as FormArray;
+    console.log(this.resultForm.value);
   }  
 }
 

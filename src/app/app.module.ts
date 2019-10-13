@@ -16,6 +16,8 @@ import { HomeService } from './home/home.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { QuestiondesigningComponent } from './questiondesigning/questiondesigning.component';
+import { SurveyService } from './SharedService/SurveyService.service';
+import { QuestionService } from './SharedService/QuestionService.service';
 
 
 export function JwtoptionsFactory(storeage) {
@@ -53,7 +55,7 @@ export function tokenGetter(){
       }
     }) 
   ],
-  providers: [AuthService,LoginService,HomeService,
+  providers: [AuthService,LoginService,HomeService,SurveyService,QuestionService,
     {
      provide:HTTP_INTERCEPTORS,
      useClass:TokenInterceptor,

@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../login/login.service';
 import { HttpResponse } from '@angular/common/http';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-register',
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
 
       this.loginService.register(this.registerForm.value).subscribe((result : any ) =>{
        
+        alert("Please  login to access your account");
         this.router.navigate(['login']);
         
       },(error : HttpResponse<any>) => {

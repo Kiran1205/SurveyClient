@@ -52,14 +52,9 @@ export class LoginComponent implements OnInit {
 
         this.router.navigate(['dashboard']);
         
-      },(error : HttpResponse<any>) => {
-          if(error.status == 401)
-          {
-            this.errorMessage ="Login failed.please try again.";
-          }
-          else{
-            this.errorMessage ="Unabe to Process request";
-          }
+      },(respo : HttpResponse<any>) => {
+        console.log(respo);
+        this.errorMessage = respo.statusText;          
       });
 
   }
