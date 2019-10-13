@@ -22,13 +22,13 @@ export class NavbarComponent implements OnInit, DoCheck{
   }
 
   OnLogOut()  {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token');   
+    this.router.navigate(['home']);
   }
   
   ngDoCheck(){
     this.isAuthorized = this.authService.isAuthenticated();
-  
-      
+    console.log(this.router.url);
   }
 
 }

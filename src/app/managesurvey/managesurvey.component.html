@@ -22,7 +22,8 @@
                   <td>{{item.createdOn}}</td> 
                   <td>{{item.expDate}}</td> 
                   <td>
-                        <button type="submit" class="btn btn-success"  (click)= "GetSurveyLink(item.id)">Survey Link</button>  
+                        <button type="submit" class="btn btn-success"   data-toggle="modal"
+                        data-target="#myModal" (click)= "GetSurveyLink(item.id)">Survey Link</button>  
                   </td>
                   <td>
                         <button type="submit" class="btn btn-info"  (click)= "EditSurvey(item.id)">Edit</button>  
@@ -35,5 +36,29 @@
         
       </tbody>
     </table>
-  </div>
+</div>
+<div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Survey :{{survey.surveyName}}</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+           {{surveylink}}
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+          
+        </div>
+      </div>
+</div>
+
 

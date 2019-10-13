@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  implements OnInit,DoCheck{
+export class AppComponent  implements OnInit{
   title = 'Survey Shrike';
   isAuthorized = false;
   
@@ -22,13 +22,18 @@ constructor(
 
   }
 
-  ngDoCheck(){
-    this.isAuthorized = this.authService.isAuthenticated();
-    if(!this.isAuthorized && this.router.url!='/login'&& this.router.url!='/register' && this.router.url!='/home') 
-    {
-      this.router.navigate(['home']);
-    }
-  }
+  // ngDoCheck(){
+  //   debugger;
+  //   this.isAuthorized = this.authService.isAuthenticated();
+  //   var chars = this.router.url.split('/');           
+  //     if(!this.isAuthorized && this.router.url!='/login'&& this.router.url!='/register' 
+  //     && this.router.url!='/home') 
+  //     {
+  //       this.router.navigate(['home']);
+  //     }
+    
+    
+  // }
   
 
 }

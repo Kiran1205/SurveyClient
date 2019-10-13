@@ -1,0 +1,39 @@
+.surveyinfo{
+    background-color: white;     
+    padding-top: 10px !important;   
+    margin-top: 20px;
+    margin-left: 10px !important;
+    width: 80%;
+    border: 1px solid green;
+    overflow: scroll;
+    max-height: 700px;
+   
+  }
+  .surveyquestion{
+      margin-left: 5%;
+      padding-left: 20px;
+      margin-top: 2%;
+      margin-right: 10%;     
+      margin-bottom: 10px;
+      padding-bottom: 10px;      
+  }
+  input[type="checkbox"][readonly] {
+    pointer-events: none;
+  }
+  input[type="text"][readonly] {
+    pointer-events: none;
+  }
+  input[type="checkbox"]{
+    width: 25px; /*Desired width*/
+    height: 25px; 
+  }
+  input[type="radio"]{
+    width: 25px; /*Desired width*/
+    height: 25px; 
+  }
+  input[type="radio"][readonly] {
+    pointer-events: none;
+  }
+  .qcheckbox{
+    display:inline;
+  }

@@ -2,10 +2,13 @@
         <div class="maintitle">
             <span class="titilecolor">Survey Shrike</span>
         </div>
+        <div id="navbarid">
         <a href="#" [routerLink]="['register']" *ngIf = "!isAuthorized" routerLinkActive="active" style=" float: right !important;margin-right: 30px !important">Sign Up</a> 
-        <a href="#" [routerLink]="['login']"  *ngIf = "!isAuthorized" routerLinkActive="active" style=" float: right !important;">Login</a>    
+        <a href="#" [routerLink]="['login']"  *ngIf = "!isAuthorized" routerLinkActive="active" style=" float: right !important;">Login</a>
+          
         
         <a  href="#" [routerLink]="['dashboard']" *ngIf = "isAuthorized"  routerLinkActive="active"><i class="fa fa-home" title="Dashboard"></i>Dashboard</a>
         <a  href="#" [routerLink]="['survey']" *ngIf = "isAuthorized"  routerLinkActive="active"><i class="fa fa-home" title="MySurvey"></i>Survey</a>
-        <a (click) ="OnLogOut()" *ngIf = "isAuthorized" style=" float: right !important;margin-right: 30px !important"><i class="fa fa-sign-out" title="Logout"></i></a>   
-      </div>
+        <a (click) ="OnLogOut()" *ngIf = "isAuthorized" style=" float: right !important;margin-right: 30px !important"><i class="fa fa-sign-out" title="Logout"></i></a>
+        </div>   
+    </div>

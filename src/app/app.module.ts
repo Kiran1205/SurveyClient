@@ -19,6 +19,9 @@ import { QuestiondesigningComponent } from './questiondesigning/questiondesignin
 import { SurveyService } from './SharedService/SurveyService.service';
 import { QuestionService } from './SharedService/QuestionService.service';
 import { ManagesurveyComponent } from './managesurvey/managesurvey.component';
+import { AnonymossurveyComponent } from './anonymossurvey/anonymossurvey.component';
+import { AuthGuardService } from './auth-guard.service';
+import { AnonymousService } from './anonymossurvey/anonymossurvey.service';
 
 
 export function JwtoptionsFactory(storeage) {
@@ -42,7 +45,8 @@ export function tokenGetter(){
     NavbarComponent,
     DashboardComponent,
     QuestiondesigningComponent,
-    ManagesurveyComponent
+    ManagesurveyComponent,
+    AnonymossurveyComponent
   ],
   imports: [
     BrowserModule,    
@@ -57,7 +61,7 @@ export function tokenGetter(){
       }
     }) 
   ],
-  providers: [AuthService,LoginService,HomeService,SurveyService,QuestionService,
+  providers: [AuthGuardService,AuthService,LoginService,HomeService,SurveyService,QuestionService,AnonymousService,
     {
      provide:HTTP_INTERCEPTORS,
      useClass:TokenInterceptor,

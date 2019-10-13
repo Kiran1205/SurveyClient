@@ -11,6 +11,10 @@ export class ManagesurveyComponent implements OnInit {
   userid:any;
   username:any;
   allSurveys :any;
+  survey ={
+    surveyName :''
+  };
+  surveylink ='';
   constructor(private surveyService: SurveyService,
     private router :Router) { }
 
@@ -35,7 +39,9 @@ export class ManagesurveyComponent implements OnInit {
   }
   GetSurveyLink(surveyid){
     this.surveyService.GetSurveyLink(surveyid).subscribe((response : any ) =>{
-     this.loaddata();
+      this.survey = response;     
+       this.surveylink ="anonymossurvey?survey="+response.surveyGuid;     
+      
      });
   }
 

@@ -12,7 +12,7 @@ import { QuestionService } from '../SharedService/QuestionService.service';
 })
 export class QuestiondesigningComponent implements OnInit {
 
-  visiblequestion = false;  
+   
   orderForm: FormGroup;
   resultForm: FormGroup;
   savedQuestions: FormArray;    
@@ -133,8 +133,9 @@ export class QuestiondesigningComponent implements OnInit {
   }
   SaveQuestionlocally(){
     var group = this.questions.controls[0] as FormGroup; 
- 
+    
     this.questionService.create(group.value).subscribe((response : any ) =>{
+      
       this.savedQuestions = this.resultForm.get('questions') as FormArray;
       var formgroupupdate = this.updateQuestions(response) as FormGroup; 
       var opt = formgroupupdate.get('qoptions')  as FormArray;  

@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="" *ngIf ="!valid" style="text-align: center;margin-top: 20%;">
+        <h4>Survey got closed or Invalid Survey Link</h4>
+    </div>
+    <div class= "surveyinfo" *ngIf ="valid">
+         <div class="form-group" style="text-align: center;">
+              <h4>{{survey.surveyName}}</h4>
+              <h6>{{survey.surveyDesc}}</h6>
+         <form [formGroup]="resultForm">
+         <div  formArrayName="questions" *ngFor="let resultfor of resultForm.get('questions').controls; let i = index;">
+                 <div class="surveyquestion">  
+                         <div [formGroupName]="i">
+                                 <div class="row">                                       
+                                         <label>Q{{i+1}}.{{resultfor.value.ques}}</label>         
+                                 </div> 
+                                                      
+                                 <div  formArrayName="qoptions"  *ngFor="let itemquest of resultfor.controls.qoptions.controls; let j = index;">
+                                         <div [formGroupName]="j">                         
+                                                 <div id="qcheckbox" *ngIf = "checkoptiontype(resultfor.value.questionType,'Checkbox')">
+                                                         <div class="form-horizontal">
+                                                                 <div class="form-group col-8">
+                                                                         <div class="row" style="display: flex;">
+                                                                                 <div>
+                                                                                 <input type="checkbox"  formControlName="selectedvalue">    
+                                                                                 </div>
+                                                                                 <div>                                                                                      
+                                                                                    <label>{{itemquest.value.optionDetail}}</label>      
+                                                                                 </div>
+                                                                                 
+                                                                         </div>                              
+                                                                 </div>
+                                                                 
+                                                         </div>
+                                                 </div>
+                 
+                                                 <div id="radiobutton" *ngIf = "checkoptiontype(resultfor.value.questionType,'RadioButton')">
+                                                         <div class="form-horizontal">
+                                                                 <div class="form-group col-8">
+                                                                         <div class="row" style="display: flex;">
+                                                                                 <div>
+                                                                                 <input type="radio" value="{{itemquest.value.optionDetail}}" name= "selectedvalue" formControlName="selectedvalue" >    
+                                                                                 </div>
+                                                                                 <div>                                                                                      
+                                                                                         <label>{{itemquest.value.optionDetail}}</label>    
+                                                                                 </div>
+                                                                                 
+                                                                         </div>                              
+                                                                         </div>
+                                                                                 
+                                                                 </div>
+                                                         </div>
+                                                 
+                                                         <div id="Dropdown" *ngIf = "checkoptiontype(resultfor.value.questionType,'Dropdown')">
+                                                                         <div id = "unid" *ngIf = "j == 0" class="form-horizontal">
+                                                                                 <div class="form-group col-10">                                                                                         
+                                                                                         <select formControlName="selectedvalue" style="min-width: 50% !important;">
+                                                                                                 <option *ngFor="let order of getdropdownvalues(i); let k = index" [value]="order.optionDetail">
+                                                                                                 {{order.optionDetail}}
+                                                                                                 </option>
+                                                                                         </select>
+                                                                                 </div>
+                                                                         </div>  
+                                                         </div>
+                                                         <div id="SingleLine" *ngIf = "checkoptiontype(resultfor.value.questionType,'SingleLine')">
+                                                                 <div class="form-horizontal">
+                                                                         <div class="form-group col-10">
+                                                                                 <input class="form-control" formControlName="selectedvalue" type="text">                         
+                                                                         </div>
+                                                                                 
+                                                                 </div>
+                                                         </div> 
+                                                         <div id="MultipleLine" *ngIf = "checkoptiontype(resultfor.value.questionType,'MultipleLine')">
+                                                                 <div class="form-horizontal">
+                                                                         <div class="form-group col-8">
+                                                                                 <textarea class="form-control" rows="3" formControlName="selectedvalue" type="text"></textarea>                                     
+                                                                         </div>
+                                                                         
+                                                                 </div>
+                                                         </div>                         
+                                                 </div>
+                                         </div>
+                         </div>
+                        
+                 </div>
+                 
+                       
+         </div>
+         </form> 
+               <div>
+               <button type="button"  class="btn btn-outline-success"  style="margin-left: 10px !important;" (click) = "SaveSurvey()">Submit</button>
+              </div>
+                                             
+          </div>
+                                            
+    </div>
+      
+</div>
