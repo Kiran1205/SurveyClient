@@ -80,7 +80,7 @@ Anonymous user can participate the survey link provided by authenticated user
 Every survey has expiry date or close data if you click the link after that it wont work
 
 # Pending
-valaidations
+valaidations<br />
 Response Analaysis	
 
 flow Digram
