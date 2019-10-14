@@ -1,30 +1,87 @@
-# MyfirstApp
+#Prod
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
+Currently Survey Shrike hosted on http://www.surveyshrike.somee.com Private Cloud server
 
-## Development server
+we can create new user or use the sample credential provided below.
+User Name : kiran1205
+Password : kiran@1234
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+every login session will expires in 15 mins
 
-## Code scaffolding
+given sample survey created and below are the url to access
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+event
+http://www.surveyshrike.somee.com/#/anonymossurvey?survey=031200e2-da0a-4e7d-9bf3-33c285bcb43f
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+traning 
+http://www.surveyshrike.somee.com/#/anonymossurvey?survey=1b0f6b41-f8d1-40f4-a47f-307d4145456e
 
 
+#Enviorment Setup
+Pre-requiste:
+following softwares need to installed on devlopment machine.
+
+Dotnet Core 2.2
+Visula studio 2017 with .Net Core Development 
+SQl Server 2016
+NodeJS
+NPM
+Visual studio code front end devlopment
+
+#Database setup
+create data base name SurveyDB
+
+execute the following scripts fto setup sql server data base tables.all scripts available path
+https://github.com/Kiran1205/SurveyAPI/blob/master/DBScript.sql
+
+#Clinet Project Setup
+check out the master branch from repository  https://github.com/Kiran1205/SurveyClient
+
+open the project in command prompt and run npm install
+
+the above command will install all depedent package for running front end application 
+
+to run application in dev machine ,run the following command
+
+npm start
+
+the above command will launch  application under http://localhost:4200
+
+#Server Project setup
+check out the master branch from repository  https://github.com/Kiran1205/SurveyAPI
+
+open project in visual studio in admin mode and run mange nuget package manger .
+
+change connection settings to local data base 
+
+build the project and run it will run under  http://localhost:50366
+
+#SurveyShrike 
+SurveyShrike help businesses conduct surveys. SurveyShrike believes every customer has different views or comments about services and over all products.
+ And every business needs to know right customer mindset to engage customers for long run. 
+
+An authenticated user required to create a survey and display (including results) various surveys created by authenticated user.
+
+#current features
+Login
+registration
+dashboard
+Create Survey
+	->Add Queston
+	->modify created Survey
+	->delete the survey
+	->generate survey link
+
+Manage Survey
+Currently repose count only displaying need to do result analysis
+
+Anonymous user can participate the survey link provided by authenticated user
+
+Every survey has expiry date or close data if you click the link after that it wont work
+
+#Pending
+valaidations
+Response Analaysis	
+
+flow Digram
 ![alt text](https://github.com/Kiran1205/SurveyClient/blob/master/ArchitectureDigram.jpg)
