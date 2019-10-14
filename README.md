@@ -2,13 +2,13 @@
 
 Currently Survey Shrike hosted on http://www.surveyshrike.somee.com Private Cloud server
 
-we can create new user or use the sample credential provided below.
-User Name : kiran1205
-Password : kiran@1234
+we can create new user or use the sample credential provided below.<br />
+User Name : kiran1205<br />
+Password : kiran@1234<br />
 
 every login session will expires in 15 mins
 
-given sample survey created and below are the url to access
+given sample survey created and below are the url to access<br />
 
 event
 http://www.surveyshrike.somee.com/#/anonymossurvey?survey=031200e2-da0a-4e7d-9bf3-33c285bcb43f
@@ -21,12 +21,12 @@ http://www.surveyshrike.somee.com/#/anonymossurvey?survey=1b0f6b41-f8d1-40f4-a47
 Pre-requiste:
 following softwares need to installed on devlopment machine.
 
-Dotnet Core 2.2
-Visula studio 2017 with .Net Core Development 
-SQl Server 2016
-NodeJS
-NPM
-Visual studio code front end devlopment
+Dotnet Core 2.2 <br />
+Visula studio 2017 with .Net Core Development <br />
+SQl Server 2016 <br />
+NodeJS <br />
+NPM <br />
+Visual studio code front end devlopment <br />
 
 # Database setup
 create data base name SurveyDB
@@ -63,14 +63,14 @@ SurveyShrike help businesses conduct surveys. SurveyShrike believes every custom
 An authenticated user required to create a survey and display (including results) various surveys created by authenticated user.
 
 # current features
-Login
-registration
-dashboard
-Create Survey
-	->Add Queston
-	->modify created Survey
-	->delete the survey
-	->generate survey link
+Login <br />
+registration <br />
+dashboard <br />
+Create Survey <br />
+	->Add Queston <br />
+	->modify created Survey <br />
+	->delete the survey<br />
+	->generate survey link<br />
 
 Manage Survey
 Currently repose count only displaying need to do result analysis
