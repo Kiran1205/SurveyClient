@@ -22,7 +22,8 @@ import { ManagesurveyComponent } from './managesurvey/managesurvey.component';
 import { AnonymossurveyComponent } from './anonymossurvey/anonymossurvey.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AnonymousService } from './anonymossurvey/anonymossurvey.service';
-
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 export function JwtoptionsFactory(storeage) {
   return {
@@ -54,7 +55,7 @@ export function tokenGetter(){
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule,   
    JwtModule.forRoot({
       config:{
         tokenGetter :tokenGetter

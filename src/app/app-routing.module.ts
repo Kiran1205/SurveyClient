@@ -10,18 +10,18 @@ import { AnonymossurveyComponent } from './anonymossurvey/anonymossurvey.compone
 import {   AuthGuardService as AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
-  { path:"home",component:HomeComponent  },
-  { path:"login",component:LoginComponent},
+  { path:"home",component:HomeComponent ,pathMatch:'full'},
+  { path:"login",component:LoginComponent,pathMatch:'full'},
   { path:"dashboard",component:DashboardComponent ,canActivate:[AuthGuard] },
-  { path:"register",component:RegisterComponent},
+  { path:"register",component:RegisterComponent,pathMatch:'full'},
   {path:"questiondes",component:QuestiondesigningComponent,canActivate:[AuthGuard]},
   {path:"survey",component:ManagesurveyComponent,canActivate:[AuthGuard]},
-  {path:"anonymossurvey",component:AnonymossurveyComponent},
-  { path:'',component:DashboardComponent,canActivate:[AuthGuard]   }
+  {path:"anonymossurvey",component:AnonymossurveyComponent,pathMatch:'full'},
+  { path:'',component:DashboardComponent,canActivate:[AuthGuard],pathMatch:'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
