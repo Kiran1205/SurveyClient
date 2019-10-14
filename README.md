@@ -1,4 +1,4 @@
-#Prod
+# Prod
 
 Currently Survey Shrike hosted on http://www.surveyshrike.somee.com Private Cloud server
 
@@ -17,7 +17,7 @@ traning
 http://www.surveyshrike.somee.com/#/anonymossurvey?survey=1b0f6b41-f8d1-40f4-a47f-307d4145456e
 
 
-#Enviorment Setup
+# Enviorment Setup
 Pre-requiste:
 following softwares need to installed on devlopment machine.
 
@@ -28,13 +28,13 @@ NodeJS
 NPM
 Visual studio code front end devlopment
 
-#Database setup
+# Database setup
 create data base name SurveyDB
 
 execute the following scripts fto setup sql server data base tables.all scripts available path
 https://github.com/Kiran1205/SurveyAPI/blob/master/DBScript.sql
 
-#Clinet Project Setup
+# Clinet Project Setup
 check out the master branch from repository  https://github.com/Kiran1205/SurveyClient
 
 open the project in command prompt and run npm install
@@ -47,7 +47,7 @@ npm start
 
 the above command will launch  application under http://localhost:4200
 
-#Server Project setup
+# Server Project setup
 check out the master branch from repository  https://github.com/Kiran1205/SurveyAPI
 
 open project in visual studio in admin mode and run mange nuget package manger .
@@ -56,13 +56,13 @@ change connection settings to local data base
 
 build the project and run it will run under  http://localhost:50366
 
-#SurveyShrike 
+# SurveyShrike 
 SurveyShrike help businesses conduct surveys. SurveyShrike believes every customer has different views or comments about services and over all products.
  And every business needs to know right customer mindset to engage customers for long run. 
 
 An authenticated user required to create a survey and display (including results) various surveys created by authenticated user.
 
-#current features
+# current features
 Login
 registration
 dashboard
@@ -79,7 +79,7 @@ Anonymous user can participate the survey link provided by authenticated user
 
 Every survey has expiry date or close data if you click the link after that it wont work
 
-#Pending
+# Pending
 valaidations
 Response Analaysis	
 
