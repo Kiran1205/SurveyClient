@@ -18,6 +18,10 @@ export class AnonymousService extends BaseHttpService{
     GetBySurveyQuestionsUID(id : number):Observable<any>      {
         return this.get('GetBySurveyQuestionsUID\?id='+id,this.COMMON_JSON_HEADER_REQUEST);
     }
+    SaveSurvey(data : any):Observable<any>      {
+        return this.post('SaveSurvey',data,this.COMMON_JSON_HEADER_REQUEST);
+    }
+    
    
     
 }

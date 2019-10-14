@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf ="!answerSubmited">
     <div class="" *ngIf ="!valid" style="text-align: center;margin-top: 20%;">
         <h4>Survey got closed or Invalid Survey Link</h4>
     </div>
@@ -21,7 +21,7 @@
                                                                  <div class="form-group col-8">
                                                                          <div class="row" style="display: flex;">
                                                                                  <div>
-                                                                                 <input type="checkbox"  formControlName="selectedvalue">    
+                                                                                 <input type="checkbox"  formControlName="selectedValue">    
                                                                                  </div>
                                                                                  <div>                                                                                      
                                                                                     <label>{{itemquest.value.optionDetail}}</label>      
@@ -38,7 +38,7 @@
                                                                  <div class="form-group col-8">
                                                                          <div class="row" style="display: flex;">
                                                                                  <div>
-                                                                                 <input type="radio" value="{{itemquest.value.optionDetail}}" name= "selectedvalue" formControlName="selectedvalue" >    
+                                                                                 <input type="radio" value="{{itemquest.value.optionDetail}}" name= "selectedValue" formControlName="selectedValue" >    
                                                                                  </div>
                                                                                  <div>                                                                                      
                                                                                          <label>{{itemquest.value.optionDetail}}</label>    
@@ -53,7 +53,7 @@
                                                          <div id="Dropdown" *ngIf = "checkoptiontype(resultfor.value.questionType,'Dropdown')">
                                                                          <div id = "unid" *ngIf = "j == 0" class="form-horizontal">
                                                                                  <div class="form-group col-10">                                                                                         
-                                                                                         <select formControlName="selectedvalue" style="min-width: 50% !important;">
+                                                                                         <select formControlName="selectedValue" style="min-width: 50% !important;">
                                                                                                  <option *ngFor="let order of getdropdownvalues(i); let k = index" [value]="order.optionDetail">
                                                                                                  {{order.optionDetail}}
                                                                                                  </option>
@@ -64,7 +64,7 @@
                                                          <div id="SingleLine" *ngIf = "checkoptiontype(resultfor.value.questionType,'SingleLine')">
                                                                  <div class="form-horizontal">
                                                                          <div class="form-group col-10">
-                                                                                 <input class="form-control" formControlName="selectedvalue" type="text">                         
+                                                                                 <input class="form-control" formControlName="selectedValue" type="text">                         
                                                                          </div>
                                                                                  
                                                                  </div>
@@ -72,7 +72,7 @@
                                                          <div id="MultipleLine" *ngIf = "checkoptiontype(resultfor.value.questionType,'MultipleLine')">
                                                                  <div class="form-horizontal">
                                                                          <div class="form-group col-8">
-                                                                                 <textarea class="form-control" rows="3" formControlName="selectedvalue" type="text"></textarea>                                     
+                                                                                 <textarea class="form-control" rows="3" formControlName="selectedValue" type="text"></textarea>                                     
                                                                          </div>
                                                                          
                                                                  </div>
@@ -87,7 +87,8 @@
          </div>
          </form> 
                <div>
-               <button type="button"  class="btn btn-outline-success"  style="margin-left: 10px !important;" (click) = "SubmitSurvey()">Submit</button>
+               <button type="button"  class="btn btn-outline-success"  style="margin-left: 10px !important;"  data-toggle="modal"
+               data-target="#myModal" (click) = "SubmitSurvey()">Submit</button>
               </div>
                                              
           </div>
@@ -95,3 +96,27 @@
     </div>
       
 </div>
+
+
+
+<div class="modal" id="myModal">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body">Thanks for Participating Survey </div>
+                
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                
+                </div>
+        </div>
+        </div>
+

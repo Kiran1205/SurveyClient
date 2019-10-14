@@ -15,6 +15,7 @@ export class AnonymossurveyComponent implements OnInit {
   savedQuestions: FormArray; 
   surveyguid:any;
   valid = true;
+  answerSubmited = false;
   survey = {
     surveyName:'',
     surveyDesc:''
@@ -56,7 +57,7 @@ export class AnonymossurveyComponent implements OnInit {
     return this.formBuilder.group({
       questionId:element.questionId,
       optionDetail: element.optionDetail,
-      selectedvalue: ''  
+      selectedValue: ''  
     });
   }
   getdropdownvalues(i){
@@ -92,6 +93,10 @@ export class AnonymossurveyComponent implements OnInit {
 
 SubmitSurvey(){
   console.log(this.resultForm.value);
+  this.anonymousService.SaveSurvey(this.resultForm.value.questions).subscribe((response : any ) =>{ 
+    this.answerSubmited = true;
+    
+   });  
 }
 
 }

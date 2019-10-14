@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:"questiondes",component:QuestiondesigningComponent,canActivate:[AuthGuard]},
   {path:"survey",component:ManagesurveyComponent,canActivate:[AuthGuard]},
   {path:"anonymossurvey",component:AnonymossurveyComponent},
-  { path:'',component:DashboardComponent   }
+  { path:'',component:DashboardComponent,canActivate:[AuthGuard]   }
 ];
 
 @NgModule({
