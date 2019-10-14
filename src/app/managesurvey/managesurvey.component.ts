@@ -40,7 +40,7 @@ export class ManagesurveyComponent implements OnInit {
   GetSurveyLink(surveyid){
     this.surveyService.GetSurveyLink(surveyid).subscribe((response : any ) =>{
       this.survey = response;     
-       this.surveylink ="anonymossurvey?survey="+response.surveyGuid;     
+       this.surveylink ="http://www.surveyshrike.somee.com/anonymossurvey?survey="+response.surveyGuid;     
       
      });
   }

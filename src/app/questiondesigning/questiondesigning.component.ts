@@ -169,7 +169,7 @@ export class QuestiondesigningComponent implements OnInit {
 
   SaveSurvey(){
     this.surveyService.GetSurveyLink(this.surveyid).subscribe((response : any ) =>{      
-      this.router.navigate(['dashboard'])
+      this.router.navigate(['survey'])
     });
   }  
 }
