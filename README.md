@@ -56,6 +56,12 @@ change connection settings to local data base
 
 build the project and run it will run under  http://localhost:50366
 
+# Authentication and authorization
+
+JWt Token used for authentication and authorization and  every login session will expires in 15 mins.
+
+used hashkey and salt key for password.
+
 # SurveyShrike 
 SurveyShrike help businesses conduct surveys. SurveyShrike believes every customer has different views or comments about services and over all products.
  And every business needs to know right customer mindset to engage customers for long run. 
